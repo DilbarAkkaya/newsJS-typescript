@@ -9,7 +9,7 @@ export interface IData {
   urlToImage: string,
 }
 
-interface ISourse {
+export interface ISourse {
   id: string,
   name: string,
 }
