@@ -34,3 +34,10 @@ export interface IFetchArticles {
   totalResults: number,
   status: string
 }
+export type OptionsKeyType = {
+  apiKey: string,
+}
+
+export type OptionsSource = {
+  sources : string,
+}
