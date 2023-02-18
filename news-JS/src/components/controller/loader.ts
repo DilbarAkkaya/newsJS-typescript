@@ -1,4 +1,4 @@
-import { OptionsKeyType, OptionsSource } from "./types";
+import { CallAlias, OptionsKeyType, OptionsSource } from "./types";
 
 class Loader {
     baseLink: string;
@@ -38,8 +38,8 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
-        fetch(this.makeUrl(options, endpoint), { method })
+    load<TData>(method: string, endpoint: string, callback: CallAlias<TData>, options = {}) {
+        fetch(this.makeUrl(options as OptionsSource, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
             .then((data) => callback(data))
