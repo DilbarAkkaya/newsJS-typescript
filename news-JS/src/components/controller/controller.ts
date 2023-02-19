@@ -1,8 +1,10 @@
 import AppLoader from './appLoader';
+import { CallAlias, IFetchSource } from './types';
 
 class AppController extends AppLoader {
-    getSources(callback) {
-        super.getResp(
+    getSources(callback: CallAlias<IFetchSource>) {
+        console.log(callback)
+        super.getResp<IFetchSource>(
             {
                 endpoint: 'sources',
             },
@@ -10,7 +12,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback) {
+    getNews(e: Event, callback) {
         let target = e.target;
         const newsContainer = e.currentTarget;
 
