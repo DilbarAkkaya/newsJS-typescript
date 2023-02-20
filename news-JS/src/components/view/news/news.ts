@@ -4,7 +4,6 @@ import { IData } from '../../controller/types';
 class News {
     draw(data: IData[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
-
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 

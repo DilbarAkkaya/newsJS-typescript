@@ -3,7 +3,6 @@ import { ISourse } from '../../controller/types';
 
 class Sources {
     draw(data: ISourse[]) {
-        console.log(data, 'sourse')
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 

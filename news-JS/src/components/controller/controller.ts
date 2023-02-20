@@ -1,9 +1,8 @@
 import AppLoader from './appLoader';
-import { CallAlias, IFetchSource, IFetchArticles } from './types';
+import { CallType, IFetchSource, IFetchArticles } from './types';
 
 class AppController extends AppLoader {
-    getSources(callback: CallAlias<IFetchSource>) {
-        console.log(callback)
+    getSources(callback: CallType<IFetchSource>) {
         super.getResp<IFetchSource>(
             {
                 endpoint: 'sources',
@@ -12,19 +11,15 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: CallAlias<IFetchArticles>) {
-        let target = e.target as HTMLDivElement;
-        
+    getNews(e: Event, callback: CallType<IFetchArticles>) {
+        let target: HTMLDivElement = e.target as HTMLDivElement;
         const newsContainer = e.currentTarget as HTMLElement;
-     
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                
-                const sourceId = target.getAttribute('data-source-id');
-                console.log(sourceId, 'target')
+                const sourceId = target.getAttribute('data-source-id') as string;
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
+                    super.getResp<IFetchArticles>(
                         {
                             endpoint: 'everything',
                             options: {
@@ -36,7 +31,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            target = target.parentNode as HTMLDivElement;
+            target = target.parentNode as HTMLInputElement;
             
         }
     }

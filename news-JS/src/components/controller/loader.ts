@@ -1,4 +1,4 @@
-import { CallAlias, OptionsKeyType, OptionsSource } from "./types";
+import { CallType, OptionsKeyType, OptionsSource } from "./types";
 
 class Loader {
     baseLink: string;
@@ -10,12 +10,11 @@ class Loader {
 
     getResp<T>(
         { endpoint = 'string', options = {} },
-        callback: CallAlias<T> = () => {
+        callback: CallType<T> = () => {
             console.error('No callback for GET response');
         }
     ) {
-        console.log(endpoint, options, 555555555555555555)
-        this.load('GET', endpoint, callback, options);
+        this.load<T>('GET', endpoint, callback, options);
     }
 
     errorHandler(res: Response) {
@@ -28,7 +27,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: OptionsSource, endpoint = 'string') {
+    makeUrl(options: OptionsSource, endpoint: string) {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -39,13 +38,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<TData>(method: string, endpoint: string, callback: CallAlias<TData>, options = {}) {
+    load<TData>(method: string, endpoint: string, callback: CallType<TData>, options = {}) {
         fetch(this.makeUrl(options as OptionsSource, endpoint), { method })
             .then(this.errorHandler)
-            .then((res) => res.json())
+            .then((res) => res.json() as Promise<TData>)
             .then((data) => {
-                callback(data);
-            console.log(data, 'kfkffkfk')})
+                callback(data)})
             .catch((err) => console.error(err));
     }
 }
