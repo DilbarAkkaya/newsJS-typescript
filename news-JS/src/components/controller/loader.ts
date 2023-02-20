@@ -8,12 +8,13 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
+    getResp<T>(
         { endpoint = 'string', options = {} },
-        callback = () => {
+        callback: CallAlias<T> = () => {
             console.error('No callback for GET response');
         }
     ) {
+        console.log(endpoint, options, 555555555555555555)
         this.load('GET', endpoint, callback, options);
     }
 
