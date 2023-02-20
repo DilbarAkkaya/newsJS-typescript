@@ -1,6 +1,13 @@
+:root {
+    --white: #ffffff;
+    --aqwa: #069d8e;
+    --pink: #ffccbc;
+    --grey: #d3e3fc;
+}
+
 body {
     color: #000;
-    background: radial-gradient(118.88% 606.86% at 0% 0%, #ffccbc 0%, #d3e3fc 100%); 
+    background: radial-gradient(118.88% 606.86% at 0% 0%, var(--pink) 0%,  var(--grey) 100%); 
     font-family: sans-serif;
 }
 
@@ -66,25 +73,22 @@ footer .copyright:before {
 }
 
 .top {
-    position: fixed;
-    bottom: 5rem;
-    right: 4rem;
-    z-index: 10000;
-    width: 4rem;
-    height: 4rem;
-    text-align: center;
-    line-height: 2rem;
-    background: #30c5ff;
-    color: #000;
-    font-size: 4rem;
-    cursor: pointer;
-    padding-top: 1rem;
-    border-radius: 2px;
     display: none;
+    width: 50px;
+    position: fixed;
+    bottom: 25px;
+    right: 45px;
+    z-index: 10;
+    border: none;
+    background-color: var(--aqwa);
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 .top:hover {
-    background: #e9ebec;
+    background: var(--white);
 }
 
 .top-show {
@@ -102,20 +106,15 @@ footer .copyright:before {
     }
 
     .top {
-        width: 2rem;
-        height: 2rem;
+        width: 5rem;
+        height: 4rem;
         font-size: 2rem;
         padding-top: 0rem;
         border-radius: 5px;
-        display: none;
     }
 
     .top:hover {
-        background: #e9ebec;
-    }
-
-    .top-show {
-        display: block;
+        background: var(--grey);
     }
 
 }
