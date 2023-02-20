@@ -43,3 +43,4 @@ export type OptionsSource = {
 }
 export type CallType<T> = (data: T) => void;
 
+export type PickData = Pick<IFetchSourceData, 'id' | 'name'>;

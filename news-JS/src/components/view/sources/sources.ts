@@ -1,8 +1,8 @@
 import './sources.css';
-import { ISourse } from '../../controller/types';
+import { PickData } from '../../controller/types';
 
 class Sources {
-    draw(data: ISourse[]) {
+    draw(data: PickData[]) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
