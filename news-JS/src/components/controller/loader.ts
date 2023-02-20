@@ -1,14 +1,14 @@
 import { CallType, OptionsKeyType, OptionsSource } from "./types";
 
 class Loader {
-    baseLink: string;
-    options: OptionsKeyType;
+    readonly baseLink: string;
+    readonly options: OptionsKeyType;
     constructor(baseLink: string, options: OptionsKeyType) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp<T>(
+    protected getResp<T>(
         { endpoint = 'string', options = {} },
         callback: CallType<T> = () => {
             console.error('No callback for GET response');
@@ -27,7 +27,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: OptionsSource, endpoint: string) {
+    private makeUrl(options: OptionsSource, endpoint: string) {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -38,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<TData>(method: string, endpoint: string, callback: CallType<TData>, options = {}) {
+    private load<TData>(method: string, endpoint: string, callback: CallType<TData>, options = {}) {
         fetch(this.makeUrl(options as OptionsSource, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json() as Promise<TData>)
