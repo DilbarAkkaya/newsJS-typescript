@@ -9,9 +9,9 @@ export interface IData {
   urlToImage: string;
 }
 
-export interface ISourse {
-  id: string;
-  name: string;
+export type ISourse  = {
+ id: string;
+ name: string;
 }
 
 export interface IFetchSourceData {
@@ -30,7 +30,7 @@ export interface IFetchSource {
 }
 
 export interface IFetchArticles {
-  articles: IData[];
+  articles?: IData[];
   totalResults: number;
   status: string;
 }

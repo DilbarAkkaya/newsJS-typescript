@@ -2,7 +2,7 @@ import './sources.css';
 import { PickData } from '../../controller/types';
 
 class Sources {
-    public draw(data: PickData[]) {
+    public draw(data: Readonly<PickData>[]) {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
