@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { CallAlias, IFetchSource } from './types';
+import { CallAlias, IFetchSource, IFetchArticles } from './types';
 
 class AppController extends AppLoader {
     getSources(callback: CallAlias<IFetchSource>) {
@@ -12,14 +12,16 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback) {
+    getNews(e: Event, callback: CallAlias<IFetchArticles>) {
         let target = e.target as HTMLDivElement;
         
-        const newsContainer = e.currentTarget as HTMLDivElement;
-        console.log(newsContainer, 'target')
+        const newsContainer = e.currentTarget as HTMLElement;
+     
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
+                
                 const sourceId = target.getAttribute('data-source-id');
+                console.log(sourceId, 'target')
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
