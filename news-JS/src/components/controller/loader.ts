@@ -1,4 +1,4 @@
-import { CallType, OptionsKeyType, OptionsSource } from "./types";
+import { CallType, OptionsKeyType, OptionsSource, RequestMethods, RequestStatus } from "./types";
 
 class Loader {
     readonly baseLink: string;
@@ -14,12 +14,12 @@ class Loader {
             console.error('No callback for GET response');
         }
     ) {
-        this.load<T>('GET', endpoint, callback, options);
+        this.load<T>(RequestMethods.GETDATA, endpoint, callback, options);
     }
 
     errorHandler(res: Response) {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === RequestStatus.UNAUTHORIZED || res.status === RequestStatus.NOTFOUND)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }

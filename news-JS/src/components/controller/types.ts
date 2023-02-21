@@ -44,3 +44,12 @@ export type OptionsSource = {
 export type CallType<T> = (data: T) => void;
 
 export type PickData = Pick<IFetchSourceData, 'id' | 'name'>;
+export enum RequestMethods {
+  GETDATA = 'GET',
+  POSTDATA = 'POST',
+}
+export enum RequestStatus {
+  NOTFOUND = 404,
+  UNAUTHORIZED = 401,
+  SUCCESS = 200,
+}
