@@ -4,4 +4,6 @@ import { scrollFunction } from './components/view/backTop';
 
 const app = new App();
 app.start();
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+    scrollFunction();
+};

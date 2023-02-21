@@ -1,8 +1,10 @@
-import { CallType, OptionsKeyType, OptionsSource, RequestMethods, RequestStatus } from "./types";
+import { CallType, OptionsKeyType, OptionsSource, RequestMethods, RequestStatus } from './types';
 
 class Loader {
     readonly baseLink: string;
+
     readonly options: OptionsKeyType;
+
     constructor(baseLink: string, options: OptionsKeyType) {
         this.baseLink = baseLink;
         this.options = options;
@@ -43,7 +45,8 @@ class Loader {
             .then(this.errorHandler)
             .then((res) => res.json() as Promise<TData>)
             .then((data) => {
-                callback(data)})
+                callback(data);
+            })
             .catch((err) => console.error(err));
     }
 }
