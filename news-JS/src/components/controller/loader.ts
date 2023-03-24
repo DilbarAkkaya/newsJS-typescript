@@ -11,7 +11,7 @@ class Loader {
     }
 
     protected getResp<T>(
-        { endpoint = 'string', options = {} },
+        { endpoint, options }: { endpoint: string; options?: Record<string, string> },
         callback: CallType<T> = () => {
             console.error('No callback for GET response');
         }

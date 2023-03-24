@@ -1,4 +1,4 @@
-export interface IData {
+export interface INews {
     author: string;
     content: string;
     description: string;
@@ -9,14 +9,12 @@ export interface IData {
     urlToImage: string;
 }
 
-export type ISourse = {
+export interface ISourse {
     id: string;
     name: string;
-};
+}
 
-export interface IFetchSourceData {
-    id: string;
-    name: string;
+export interface ISourceData extends ISourse {
     description: string;
     url: string;
     category: string;
@@ -24,13 +22,13 @@ export interface IFetchSourceData {
     country: string;
 }
 
-export interface IFetchSource {
+export interface ISourceResponse {
     status: string;
-    sources: IFetchSourceData[];
+    sources: ISourceData[];
 }
 
-export interface IFetchArticles {
-    articles?: IData[];
+export interface IArticlesResponse {
+    articles?: INews[];
     totalResults: number;
     status: string;
 }
@@ -43,7 +41,7 @@ export type OptionsSource = {
 };
 export type CallType<T> = (data: T) => void;
 
-export type PickData = Pick<IFetchSourceData, 'id' | 'name'>;
+export type PickData = Pick<ISourceData, 'id' | 'name'>;
 export enum RequestMethods {
     GETDATA = 'GET',
     POSTDATA = 'POST',
