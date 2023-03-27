@@ -42,6 +42,7 @@ export type OptionsSource = {
 export type CallType<T> = (data: T) => void;
 
 export type PickData = Pick<ISourceData, 'id' | 'name'>;
+
 export enum RequestMethods {
     GETDATA = 'GET',
     POSTDATA = 'POST',
